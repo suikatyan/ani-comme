@@ -1,0 +1,35 @@
+<template>
+  <v-app>
+    <v-app-bar
+      color="primary"
+      app
+      dark
+    >
+      <h1>あにこめ</h1>
+      <v-spacer />
+      <v-btn to="/config" icon>
+        <v-icon>mdi-cog</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-content>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+
+    <v-footer
+      color="primary"
+      app
+      dark
+      absolute
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        &copy; 2020 suikatyan
+      </v-col>
+    </v-footer>
+  </v-app>
+</template>

@@ -1,5 +1,5 @@
 <template>
   <div class="config">
-    <h1>This is a about page</h1>
+    <h1>This is a config page</h1>
   </div>
 </template>
