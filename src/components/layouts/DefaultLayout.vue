@@ -4,6 +4,7 @@
       color="primary"
       app
       dark
+      hide-on-scroll
     >
       <h1>あにこめ</h1>
       <v-spacer />
