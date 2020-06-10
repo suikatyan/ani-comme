@@ -169,6 +169,19 @@
                 </template>
               </config-item>
 
+              <!-- アニメーションスピード -->
+              <config-item>
+                <template v-slot:title>
+                  アニメーションスピード
+                </template>
+                <template v-slot:content>
+                  <v-select
+                    v-model='config.animationSpeed'
+                    :items="['slower', 'slow', 'normal', 'fast', 'faster']"
+                  />
+                </template>
+              </config-item>
+
             </v-container>
           </v-card>
 

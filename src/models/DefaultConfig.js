@@ -9,4 +9,5 @@ export default {
   fromBottom: true,
   chatAreaRounded: true,
   layout: [],
+  animationSpeed: 'normal'
 }

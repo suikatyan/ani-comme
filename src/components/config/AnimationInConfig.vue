@@ -18,6 +18,7 @@ export default {
     return {
       model: this.animation,
       animationList: [
+        'none',
         'backInDown',
         'backInLeft',
         'backInRight',
