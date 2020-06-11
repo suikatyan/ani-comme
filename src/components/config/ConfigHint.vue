@@ -7,7 +7,7 @@
   >
     <template v-slot:activator="{ on, attrs }">
       <v-icon
-        color="primary"
+        color="accent"
         v-bind="attrs"
         v-on="on"
       >
