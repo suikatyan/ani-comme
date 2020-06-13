@@ -1,6 +1,6 @@
 <template>
   <v-select
-    v-model='model'
+    v-model="model"
     :items="animationList"
     @input="onInput"
   />
@@ -8,16 +8,16 @@
 
 <script>
 export default {
-  props: {
-    animation: {
-      type: String,
-      required: true,
+  'props': {
+    'animation': {
+      'type': String,
+      'required': true
     }
   },
-  data() {
+  data () {
     return {
-      model: this.animation,
-      animationList: [
+      'model': this.animation,
+      'animationList': [
         'none',
         'backInDown',
         'backInLeft',
@@ -60,14 +60,17 @@ export default {
         'slideInDown',
         'slideInLeft',
         'slideInRight',
-        'slideInUp',
-      ],
+        'slideInUp'
+      ]
     }
   },
-  methods: {
-    onInput(animation) {
-      this.$emit('input', animation)
-    },
-  },
+  'methods': {
+    onInput (animation) {
+      this.$emit(
+        'input',
+        animation
+      )
+    }
+  }
 }
 </script>

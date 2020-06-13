@@ -8,14 +8,17 @@
     >
       <h1>あにこめ</h1>
       <v-spacer />
-      <v-btn to="/config" icon>
+      <v-btn
+        to="/config"
+        icon
+      >
         <v-icon>mdi-cog</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-content>
       <v-container fluid>
-        <router-view></router-view>
+        <router-view />
       </v-container>
     </v-content>
 

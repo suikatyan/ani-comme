@@ -2,12 +2,13 @@
   <v-menu
     v-model="menu"
     :close-on-content-click="false"
-    transition="scale-transition"
+    transition="fade-transition"
     offset-y
+    open-on-hover
   >
     <template v-slot:activator="{ on, attrs }">
       <v-icon
-        color="accent"
+        color="primary"
         v-bind="attrs"
         v-on="on"
       >
@@ -20,10 +21,10 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      menu: false,
+      'menu': false
     }
-  },
+  }
 }
 </script>

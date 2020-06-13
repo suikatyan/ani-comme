@@ -4,24 +4,29 @@
   </div>
 </template>
 
+<style lang="scss">
+@import "~animate.css/animate.min.css";
+</style>
+
 <script>
-import DefaultLayout from '@/components/layouts/DefaultLayout'
 import BlankLayout from '@/components/layouts/BlankLayout'
+import DefaultLayout from '@/components/layouts/DefaultLayout'
+
 
 export default {
-  components: {
+  'components': {
     DefaultLayout,
     BlankLayout
   },
-  data() {
+  data () {
     return {
-      layout: 'DefaultLayout',
+      'layout': 'DefaultLayout'
     }
   },
-  created() {
+  created () {
     if (this.$route.meta.layout) {
       this.layout = this.$route.meta.layout
     }
-  },
+  }
 }
 </script>

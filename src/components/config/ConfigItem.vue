@@ -1,6 +1,9 @@
 <template>
   <v-row>
-    <v-col cols="4" class="d-flex flex-column justify-center">
+    <v-col
+      cols="4"
+      class="d-flex flex-column justify-center"
+    >
       <span class="ml-4">
         <slot name="title" />
       </span>

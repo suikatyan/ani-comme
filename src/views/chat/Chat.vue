@@ -9,11 +9,11 @@
 export default {
   data () {
     return {
-      id:  null,
+      'id': null
     }
   },
-  mounted() {
+  mounted () {
     this.id = this.$route.query.id
   }
-};
+}
 </script>

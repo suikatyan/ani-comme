@@ -16,10 +16,10 @@
     "vuetify": "^2.2.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-router": "^4.4.1",
-    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-plugin-babel": "^4.4.4",
+    "@vue/cli-plugin-eslint": "^4.4.4",
+    "@vue/cli-plugin-router": "^4.4.4",
+    "@vue/cli-service": "^4.4.4",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
@@ -35,13 +35,28 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "plugin:vue/recommended",
+      "eslint:all"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "quotes": ["warn", "single"],
+      "indent": ["warn", 2],
+      "sort-keys": "off",
+      "no-console": "off",
+      "max-len": "off",
+      "max-lines": "off",
+      "no-magic-numbers": "off",
+      "sort-vars": "off",
+      "no-inline-comments": "off",
+      "line-comment-position": "off",
+      "id-length": "off",
+      "max-lines-per-function": "off",
+      "semi": ["warn", "never"],
+      "padded-blocks": ["error", "never"]
+    }
   },
   "browserslist": [
     "> 1%",
