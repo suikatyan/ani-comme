@@ -14,19 +14,19 @@ import DefaultLayout from '@/components/layouts/DefaultLayout'
 
 
 export default {
-  'components': {
+  components: {
     DefaultLayout,
-    BlankLayout
+    BlankLayout,
   },
-  data () {
+  data() {
     return {
-      'layout': 'DefaultLayout'
+      layout: 'DefaultLayout',
     }
   },
-  created () {
+  created() {
     if (this.$route.meta.layout) {
       this.layout = this.$route.meta.layout
     }
-  }
+  },
 }
 </script>

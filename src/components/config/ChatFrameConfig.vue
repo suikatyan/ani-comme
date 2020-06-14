@@ -30,7 +30,7 @@
               block
               v-on="on"
             >
-              {{ col.content }}
+              {{ getContentName(col.content) }}
             </v-btn>
           </template>
           <v-card>
@@ -175,81 +175,114 @@
 <script>
 import ColorConfig from '@/components/config/ColorConfig'
 import ConfigItem from '@/components/config/ConfigItem'
+import range from '@/utils/range'
 
 const MAX_COLUMN_COUNT = 3,
   MAX_ROW_COUNT = 3,
 
-  defaultFrame = () => ({'content': 'メッセージ',
-    'align': 'left',
-    'color': '#000000FF'})
+  defaultFrame = () => ({
+    content: 'message',
+    align: 'left',
+    color: '#000000FF',
+  })
 
 export default {
-  'components': {
+  components: {
     ConfigItem,
-    ColorConfig
+    ColorConfig,
   },
-  'props': {
-    'layout': {
-      'type': Array,
-      'required': true
-    }
+  props: {
+    layout: {
+      type: Array,
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
       MAX_COLUMN_COUNT,
       MAX_ROW_COUNT,
-      'frame': this.layout,
-      'contents': [
-        '名前',
-        '時刻',
-        '時刻+名前',
-        'アイコン+名前',
-        '時刻+アイコン+名前',
-        'サイト名',
-        'メッセージ'
+      frame: this.layout,
+      contents: [
+        {
+          text: '名前',
+          value: 'name',
+        },
+        {
+          text: '時刻',
+          value: 'time',
+        },
+        {
+          text: '時刻+名前',
+          value: 'time-name',
+        },
+        {
+          text: 'アイコン',
+          value: 'icon',
+        },
+        {
+          text: 'アイコン+名前',
+          value: 'icon-name',
+        },
+        {
+          text: '時刻+アイコン+名前',
+          value: 'time-icon-name',
+        },
+        {
+          text: 'サイト名',
+          value: 'site',
+        },
+        {
+          text: 'メッセージ',
+          value: 'message',
+        },
       ],
-      'menu': new Array(MAX_ROW_COUNT).fill(0).
-        map(() => new Array(MAX_COLUMN_COUNT).fill(false))
+      menu: range(MAX_ROW_COUNT).map(() => range(
+        MAX_COLUMN_COUNT,
+        false,
+      )),
     }
   },
-  'methods': {
-    addColumn (rowIndex, colIndex) {
+  methods: {
+    addColumn(rowIndex, colIndex) {
       this.menu[rowIndex][colIndex] = false
       this.frame[rowIndex].splice(
         colIndex + 1,
         0,
-        defaultFrame()
+        defaultFrame(),
       )
     },
-    addRow (rowIndex, colIndex) {
+    addRow(rowIndex, colIndex) {
       this.menu[rowIndex][colIndex] = false
       this.frame.splice(
         rowIndex + 1,
         0,
-        [defaultFrame()]
+        [defaultFrame()],
       )
     },
-    removeColumn (rowIndex, colIndex) {
+    removeColumn(rowIndex, colIndex) {
       this.menu[rowIndex][colIndex] = false
       this.frame[rowIndex].splice(
         colIndex,
-        1
+        1,
       )
     },
-    removeRow (rowIndex, colIndex) {
+    removeRow(rowIndex, colIndex) {
       this.menu[rowIndex][colIndex] = false
       this.frame.splice(
         rowIndex,
-        1
+        1,
       )
     },
-    convertAlign (align) {
+    convertAlign(align) {
       return {
-        'left': 'justify-start',
-        'center': 'justify-center',
-        'right': 'justify-end'
+        left: 'justify-start',
+        center: 'justify-center',
+        right: 'justify-end',
       }[align]
-    }
-  }
+    },
+    getContentName(name) {
+      return this.contents.find(content => content.value === name).text
+    },
+  },
 }
 </script>

@@ -21,10 +21,10 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      'menu': false
+      menu: false,
     }
-  }
+  },
 }
 </script>

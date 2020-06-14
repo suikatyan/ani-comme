@@ -25,7 +25,7 @@
     </template>
     <v-color-picker
       v-model="model"
-      mode="rgba"
+      mode="hexa"
       @update:color="onUpdate"
     />
   </v-menu>
@@ -40,25 +40,25 @@
 
 <script>
 export default {
-  'props': {
-    'color': {
-      'type': String,
-      'required': true
-    }
+  props: {
+    color: {
+      type: String,
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      'menu': false,
-      'model': this.color
+      menu: false,
+      model: this.color,
     }
   },
-  'methods': {
-    onUpdate (color) {
+  methods: {
+    onUpdate(color) {
       this.$emit(
         'update',
-        color.hex
+        color.hexa,
       )
-    }
-  }
+    },
+  },
 }
 </script>

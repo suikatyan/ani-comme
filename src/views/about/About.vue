@@ -10,16 +10,16 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      'breads': [
-        {'text': 'トップ',
-          'to': '/'},
-        {'text': 'このサイトについて',
-          'to': '/config',
-          'disabled': true}
-      ]
+      breads: [
+        {text: 'トップ',
+          to: '/'},
+        {text: 'このサイトについて',
+          to: '/config',
+          disabled: true},
+      ],
     }
-  }
+  },
 }
 </script>

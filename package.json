@@ -55,7 +55,28 @@
       "id-length": "off",
       "max-lines-per-function": "off",
       "semi": ["warn", "never"],
-      "padded-blocks": ["error", "never"]
+      "padded-blocks": ["error", "never"],
+      "space-before-function-paren": ["error", {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }],
+      "quote-props": ["error", "as-needed"],
+      "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }],
+      "function-call-argument-newline": ["error", "consistent"],
+      "one-var": "off",
+      "no-ternary": "off",
+      "multiline-ternary": "off",
+      "arrow-parens": ["error", "as-needed"],
+      "lines-between-class-members": "off",
+      "no-plusplus": "off",
+      "func-names": "off"
     }
   },
   "browserslist": [

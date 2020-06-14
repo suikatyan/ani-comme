@@ -8,69 +8,55 @@
 
 <script>
 export default {
-  'props': {
-    'animation': {
-      'type': String,
-      'required': true
-    }
+  props: {
+    animation: {
+      type: String,
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      'model': this.animation,
-      'animationList': [
+      model: this.animation,
+      animationList: [
         'none',
         'backInDown',
         'backInLeft',
         'backInRight',
         'backInUp',
-        'bounceIn',
-        'bounceInDown',
-        'bounceInLeft',
-        'bounceInRight',
-        'bounceInUp',
         'fadeIn',
         'fadeInDown',
-        'fadeInDownBig',
         'fadeInLeft',
-        'fadeInLeftBig',
         'fadeInRight',
-        'fadeInRightBig',
         'fadeInUp',
-        'fadeInUpBig',
         'fadeInTopLeft',
         'fadeInTopRight',
         'fadeInBottomLeft',
         'fadeInBottomRight',
         'flipInX',
-        'flipInY',
         'lightSpeedInRight',
         'lightSpeedInLeft',
-        'rotateIn',
         'rotateInDownLeft',
         'rotateInDownRight',
         'rotateInUpLeft',
         'rotateInUpRight',
-        'jackInTheBox',
-        'rollIn',
         'zoomIn',
         'zoomInDown',
         'zoomInLeft',
         'zoomInRight',
-        'zoomInUp',
         'slideInDown',
         'slideInLeft',
         'slideInRight',
-        'slideInUp'
-      ]
+        'slideInUp',
+      ],
     }
   },
-  'methods': {
-    onInput (animation) {
+  methods: {
+    onInput(animation) {
       this.$emit(
         'input',
-        animation
+        animation,
       )
-    }
-  }
+    },
+  },
 }
 </script>

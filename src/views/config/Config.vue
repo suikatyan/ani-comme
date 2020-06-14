@@ -109,9 +109,9 @@
                     文字サイズ
                   </template>
                   <template v-slot:content>
-                    <v-select
-                      v-model="config.fontSize"
-                      :items="['6px', '7px', '8px', '9px', '10px', '11px', '12px', '13px', '14px', '15px', '16px', '17px', '18px', '19px', '20px']"
+                    <font-size-config
+                      :font-size="config.fontSize"
+                      @input="config.fontSize = $event"
                     />
                   </template>
                 </config-item>
@@ -152,29 +152,7 @@
                       :items="[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"
                       hint="単位は秒です。ゼロ秒を指定するとコメントは消えなくなります。"
                       persistent-hint
-                    />
-                  </template>
-                </config-item>
-
-                <!-- 下から上へ -->
-                <config-item>
-                  <template v-slot:title>
-                    下から上へ
-                    <config-hint>
-                      <v-card>
-                        <v-card-title>
-                          下から上へ について
-                        </v-card-title>
-                        <v-card-text>
-                          新規コメントを下から挿入するかどうか選んでください。
-                        </v-card-text>
-                      </v-card>
-                    </config-hint>
-                  </template>
-                  <template v-slot:content>
-                    <v-switch
-                      v-model="config.fromBottom"
-                      color="accent"
+                      @input="clearPreview()"
                     />
                   </template>
                 </config-item>
@@ -192,13 +170,54 @@
                   </template>
                 </config-item>
 
+                <!-- コメントエリアに影をつける -->
+                <config-item>
+                  <template v-slot:title>
+                    コメントエリアに影をつける
+                  </template>
+                  <template v-slot:content>
+                    <v-switch
+                      v-model="config.commentAreaShadow"
+                      color="accent"
+                    />
+                  </template>
+                </config-item>
+
+                <!-- 下から上へ -->
+                <config-item>
+                  <template v-slot:title>
+                    下から上へ
+                    <config-hint>
+                      <v-card>
+                        <v-card-title>
+                          下から上へ について
+                        </v-card-title>
+                        <v-card-text>
+                          新規コメントを下から挿入するかどうか選んでください。<br>
+                          一部のアニメーションがおかしくなるので、注意してください。
+                        </v-card-text>
+                      </v-card>
+                    </config-hint>
+                  </template>
+                  <template v-slot:content>
+                    <v-switch
+                      v-model="config.fromBottom"
+                      color="accent"
+                      @change="clearPreview()"
+                    />
+                  </template>
+                </config-item>
+
                 <!-- 表示アニメーション -->
                 <config-item>
                   <template v-slot:title>
                     表示アニメーション
                   </template>
                   <template v-slot:content>
-                    <animation-in-config :animation="config.animationIn" />
+                    <animation-in-config
+                      :animation="config.animationIn"
+                      @input="config.animationIn = $event"
+                    />
                   </template>
                 </config-item>
 
@@ -208,19 +227,9 @@
                     非表示アニメーション
                   </template>
                   <template v-slot:content>
-                    <animation-out-config :animation="config.animationOut" />
-                  </template>
-                </config-item>
-
-                <!-- アニメーションスピード -->
-                <config-item>
-                  <template v-slot:title>
-                    アニメーションスピード
-                  </template>
-                  <template v-slot:content>
-                    <v-select
-                      v-model="config.animationSpeed"
-                      :items="['slower', 'slow', 'normal', 'fast', 'faster']"
+                    <animation-out-config
+                      :animation="config.animationOut"
+                      @input="config.animationOut = $event"
                     />
                   </template>
                 </config-item>
@@ -319,10 +328,13 @@
 
         <!-- プレビュー -->
         <v-col cols="5">
-          <chat-area
-            :config="config"
-            :chats="chats"
-          />
+          <v-card class="ichimatsu elevation-0 pa-0 ma-0 preview">
+            <chat-area
+              :config="config"
+              :chats="chats"
+              class="full-height"
+            />
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -333,6 +345,22 @@
 .preview {
   position: sticky;
   top: 70px;
+  height: 400px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.preview::-webkit-scrollbar {
+  display:none;
+}
+
+.ichimatsu {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYlWNgYGCQwoKxgqGgcJA5h3yFAAs8BRWVSwooAAAAAElFTkSuQmCC) repeat;
 }
 </style>
 
@@ -341,14 +369,17 @@ import AnimationInConfig from '@/components/config/AnimationInConfig'
 import AnimationOutConfig from '@/components/config/AnimationOutConfig'
 import ChatArea from '@/components/chat/ChatArea'
 import ChatFrameConfig from '@/components/config/ChatFrameConfig'
+import ChatService from '@/services/ChatService'
 import ColorConfig from '@/components/config/ColorConfig'
 import ConfigHint from '@/components/config/ConfigHint'
 import ConfigItem from '@/components/config/ConfigItem'
-import DefaultConfig from '@/models/DefaultConfig'
+import DefaultConfig from '@/models/config/DefaultConfig'
+import DummyProvider from '@/services/chatProvider/Dummy'
 import FontConfig from '@/components/config/FontConfig'
+import FontSizeConfig from '@/components/config/FontSizeConfig'
 
 export default {
-  'components': {
+  components: {
     ConfigItem,
     ColorConfig,
     FontConfig,
@@ -356,24 +387,47 @@ export default {
     AnimationInConfig,
     AnimationOutConfig,
     ChatFrameConfig,
-    ChatArea
+    ChatArea,
+    FontSizeConfig,
   },
-  data () {
+  data() {
     return {
-      'breads': [
-        {'text': 'トップ',
-          'to': '/'},
-        {'text': '設定',
-          'to': '/config',
-          'disabled': true}
+      breads: [
+        {
+          text: 'トップ',
+          to: '/',
+        },
+        {
+          text: '設定',
+          to: '/config',
+          disabled: true,
+        },
       ],
-      'config': DefaultConfig,
-      'moreDetail': false,
-      'chats': [{}]
+      config: DefaultConfig,
+      moreDetail: false,
+      chats: [],
     }
   },
-  mounted () {
-    // SetInterval(() => this.chats.push({}), 2000)
-  }
+  mounted() {
+    const chatService = new ChatService([new DummyProvider()], chat => {
+      this.chats.push(chat)
+    })
+
+    const el = window.document.querySelector('.preview ')
+    setInterval(() => {
+      if (this.config.fromBottom) {
+        el.scrollTop = el.scrollHeight
+      } else {
+        el.scrollTop = 0
+      }
+    }, 50)
+
+    chatService.start()
+  },
+  methods: {
+    clearPreview() {
+      this.chats.push({type: 'command:clear'})
+    },
+  },
 }
 </script>

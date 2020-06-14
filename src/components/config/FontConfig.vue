@@ -10,33 +10,33 @@
 
 <script>
 export default {
-  'props': {
-    'fonts': {
-      'type': Array,
-      'required': true
-    }
+  props: {
+    fonts: {
+      type: Array,
+      required: true,
+    },
   },
-  data () {
+  data() {
     return {
-      'model': this.fonts,
-      'fontList': [
+      model: this.fonts,
+      fontList: [
         'Noto Sans JP',
         'M PLUS 1p',
         'M PLUS Rounded 1c',
         'Sawarabi Mincho',
         'Sawarabi Gothic',
         'sans-serif',
-        'serif'
-      ]
+        'serif',
+      ],
     }
   },
-  'methods': {
-    onInput (font) {
+  methods: {
+    onInput(font) {
       this.$emit(
         'input',
-        font
+        font,
       )
-    }
-  }
+    },
+  },
 }
 </script>
