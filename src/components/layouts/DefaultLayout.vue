@@ -16,11 +16,11 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container fluid>
         <slot />
       </v-container>
-    </v-content>
+    </v-main>
 
     <v-footer
       color="primary"
