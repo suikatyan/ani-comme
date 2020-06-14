@@ -18,7 +18,7 @@
 
     <v-content>
       <v-container fluid>
-        <router-view />
+        <slot />
       </v-container>
     </v-content>
 

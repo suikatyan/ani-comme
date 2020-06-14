@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # nodenv
 .node-version
+
+# firebase
+.firebase

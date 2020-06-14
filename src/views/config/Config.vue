@@ -1,5 +1,5 @@
 <template>
-  <div class="config">
+  <default-layout class="config">
     <v-breadcrumbs :items="breads">
       <template v-slot:divider>
         <v-icon>mdi-chevron-right</v-icon>
@@ -160,7 +160,7 @@
                         </v-card-title>
                         <v-card-text>
                           新規コメントを下から挿入するかどうか選んでください。<br>
-                          一部のアニメーションがおかしくなるので、注意してください。
+                          オンにすると一部の「表示アニメーション」「非表示アニメーション」で表示がおかしくなるので、注意してください。
                         </v-card-text>
                       </v-card>
                     </config-hint>
@@ -332,7 +332,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </default-layout>
 </template>
 
 <style scoped>
@@ -368,6 +368,7 @@ import ColorConfig from '@/components/config/ColorConfig'
 import ConfigHint from '@/components/config/ConfigHint'
 import ConfigItem from '@/components/config/ConfigItem'
 import DefaultConfig from '@/models/config/DefaultConfig'
+import DefaultLayout from '@/components/layouts/DefaultLayout'
 import DummyProvider from '@/services/chatProvider/Dummy'
 import FontConfig from '@/components/config/FontConfig'
 import FontSizeConfig from '@/components/config/FontSizeConfig'
@@ -376,6 +377,7 @@ import PresetSection from '@/components/config/sections/PresetSection'
 
 export default {
   components: {
+    DefaultLayout,
     ConfigItem,
     ColorConfig,
     FontConfig,

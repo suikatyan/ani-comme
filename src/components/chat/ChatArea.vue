@@ -1,7 +1,7 @@
 <template>
   <v-card
     :style="styles"
-    class="elevation-0"
+    class="elevation-0 full-height full-width"
   >
     <transition-group
       name="chat-transition"
@@ -34,6 +34,10 @@
 
 .full-height {
   height: 100%;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .invisible {

@@ -1,5 +1,5 @@
 <template>
   <v-app>
-    <router-view />
+    <slot />
   </v-app>
 </template>

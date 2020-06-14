@@ -23,9 +23,6 @@ const routes = [
     {
       path: '/chat',
       name: 'Chat',
-      meta: {
-        layout: 'BlankLayout',
-      },
       component: () => import(/* WebpackChunkName: "chat" */ '@/views/chat/Chat.vue'),
     },
     {
