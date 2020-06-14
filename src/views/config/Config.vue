@@ -5,56 +5,21 @@
         <v-icon>mdi-chevron-right</v-icon>
       </template>
     </v-breadcrumbs>
-    <div class="d-flex justify-space-between">
-      <h2>設定画面</h2>
-      <v-btn color="success">
-        保存
-      </v-btn>
-    </div>
     <v-container>
+      <div class="d-flex justify-space-between">
+        <h2>設定画面</h2>
+        <v-btn color="success">
+          決定
+        </v-btn>
+      </div>
       <v-row>
         <!-- 設定項目 -->
         <v-col cols="7">
           <!-- プリセット -->
-          <v-card
-            color="grey lighten-4"
-            class="mb-4"
-          >
-            <v-card-title>
-              プリセット
-            </v-card-title>
-            <v-card-subtitle>
-              予め用意されているおすすめ設定です。
-            </v-card-subtitle>
-            <v-container>
-              <v-row justify="space-around">
-                <v-btn
-                  depressed
-                  color="primary"
-                >
-                  1
-                </v-btn>
-                <v-btn
-                  depressed
-                  color="primary"
-                >
-                  2
-                </v-btn>
-                <v-btn
-                  depressed
-                  color="primary"
-                >
-                  3
-                </v-btn>
-                <v-btn
-                  depressed
-                  color="primary"
-                >
-                  4
-                </v-btn>
-              </v-row>
-            </v-container>
-          </v-card>
+          <preset-section />
+
+          <!-- 設定コードを読み込む -->
+          <old-config-section />
 
           <v-btn
             v-if="!moreDetail"
@@ -89,8 +54,9 @@
                           フォント について
                         </v-card-title>
                         <v-card-text>
-                          この項目は複数選択です。<br>
-                          一番左にあるものが優先されます。
+                          この項目は複数選択です。左にあるものが優先されます。<br>
+                          自分のPCにインストールされているフォントを使いたい場合、そのフォント名を記入してください。<br>
+                          sans-serifはブラウザに設定されているゴシック体フォントのことです。sansは、その明朝体のことです。
                         </v-card-text>
                       </v-card>
                     </config-hint>
@@ -233,6 +199,31 @@
                     />
                   </template>
                 </config-item>
+
+                <!-- アニメーションをスムーズにする -->
+                <config-item>
+                  <template v-slot:title>
+                    アニメーションをスムーズにする
+                    <config-hint>
+                      <v-card>
+                        <v-card-title>
+                          アニメーションをスムーズにする について
+                        </v-card-title>
+                        <v-card-text>
+                          アニメーションをよりスムーズにします。<br>
+                          コメントの流れが速いときに表示がおかしくなるときがあります。<br>
+                          その場合は、この項目をオフにしてください。
+                        </v-card-text>
+                      </v-card>
+                    </config-hint>
+                  </template>
+                  <template v-slot:content>
+                    <v-switch
+                      v-model="config.smooth"
+                      color="accent"
+                    />
+                  </template>
+                </config-item>
               </v-container>
             </v-card>
 
@@ -328,7 +319,10 @@
 
         <!-- プレビュー -->
         <v-col cols="5">
-          <v-card class="ichimatsu elevation-0 pa-0 ma-0 preview">
+          <v-card
+            :style="{borderRadius: config.chatAreaRounded ? '4px' : 0}"
+            class="ichimatsu elevation-0 pa-0 ma-0 preview"
+          >
             <chat-area
               :config="config"
               :chats="chats"
@@ -377,6 +371,8 @@ import DefaultConfig from '@/models/config/DefaultConfig'
 import DummyProvider from '@/services/chatProvider/Dummy'
 import FontConfig from '@/components/config/FontConfig'
 import FontSizeConfig from '@/components/config/FontSizeConfig'
+import OldConfigSection from '@/components/config/sections/OldConfigSection'
+import PresetSection from '@/components/config/sections/PresetSection'
 
 export default {
   components: {
@@ -389,6 +385,8 @@ export default {
     ChatFrameConfig,
     ChatArea,
     FontSizeConfig,
+    PresetSection,
+    OldConfigSection,
   },
   data() {
     return {

@@ -11,6 +11,7 @@ export default {
   fromBottom: false,
   chatAreaRounded: true,
   commentAreaShadow: true,
+  smooth: true,
   niconico: {
     backgroundColor: '#96D3B2AA',
     commentAreaRounded: true,

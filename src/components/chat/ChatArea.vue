@@ -24,8 +24,11 @@
 </template>
 
 <style scoped>
-.chat-item {
+.smooth .chat-item {
   transition: all 0.5s;
+}
+
+.chat-item {
   width: 100%;
 }
 
@@ -75,6 +78,7 @@ export default {
         'align-end': !this.config.fromBottom,
         'align-content-start': !this.config.fromBottom,
         'align-content-end': this.config.fromBottom,
+        smooth: this.config.smooth,
       }
     },
     animationIn() {

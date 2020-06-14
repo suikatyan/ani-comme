@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       model: this.fontSize,
-      sizeList: range(45).map((_, index) => `${index + 6}px`),
+      sizeList: range(40).map((_, index) => `${index + 10}px`),
     }
   },
   methods: {
