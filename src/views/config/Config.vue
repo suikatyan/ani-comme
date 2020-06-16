@@ -8,9 +8,7 @@
     <v-container>
       <div class="d-flex justify-space-between">
         <h2>設定画面</h2>
-        <v-btn color="success">
-          決定
-        </v-btn>
+        <save-button :config="config" />
       </div>
       <v-row>
         <!-- 設定項目 -->
@@ -374,6 +372,7 @@ import FontConfig from '@/components/config/FontConfig'
 import FontSizeConfig from '@/components/config/FontSizeConfig'
 import OldConfigSection from '@/components/config/sections/OldConfigSection'
 import PresetSection from '@/components/config/sections/PresetSection'
+import SaveButton from '@/components/config/SaveButton'
 
 export default {
   components: {
@@ -389,6 +388,7 @@ export default {
     FontSizeConfig,
     PresetSection,
     OldConfigSection,
+    SaveButton,
   },
   data() {
     return {

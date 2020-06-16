@@ -12,26 +12,26 @@
     <v-container>
       <v-row justify="space-around">
         <v-btn
-          depressed
           color="primary"
+          outlined
         >
           1
         </v-btn>
         <v-btn
-          depressed
           color="primary"
+          outlined
         >
           2
         </v-btn>
         <v-btn
-          depressed
           color="primary"
+          outlined
         >
           3
         </v-btn>
         <v-btn
-          depressed
           color="primary"
+          outlined
         >
           4
         </v-btn>

@@ -17,7 +17,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-container fluid>
+      <v-container>
         <slot />
       </v-container>
     </v-main>

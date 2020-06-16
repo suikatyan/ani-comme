@@ -11,6 +11,7 @@
   "dependencies": {
     "animate.css": "^4.1.0",
     "core-js": "^3.6.5",
+    "firebase": "^7.15.1",
     "md5": "^2.2.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -104,7 +105,11 @@
       ],
       "lines-between-class-members": "off",
       "no-plusplus": "off",
-      "func-names": "off"
+      "func-names": "off",
+      "capitalized-comments": "off",
+      "dot-location": ["error", "property"],
+      "prefer-object-spread": "off",
+      "max-statements": "off"
     }
   },
   "browserslist": [
