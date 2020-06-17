@@ -109,7 +109,8 @@
       "capitalized-comments": "off",
       "dot-location": ["error", "property"],
       "prefer-object-spread": "off",
-      "max-statements": "off"
+      "max-statements": "off",
+      "class-methods-use-this": "off"
     }
   },
   "browserslist": [

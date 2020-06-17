@@ -61,7 +61,7 @@ import BlankLayout from '@/components/layouts/BlankLayout'
 import ChatArea from '@/components/chat/ChatArea'
 import ChatService from '@/services/ChatService'
 import DefaultConfig from '@/models/config/DefaultConfig'
-import DummyProvider from '@/services/chatProvider/Dummy'
+import NiconicoProvider from '@/services/chatProvider/Niconico'
 
 export default {
   components: {
@@ -78,6 +78,7 @@ export default {
       youtubeUrl: '',
       errorMessage: null,
       homeUrl: window.location.origin,
+      chatServices: [],
     }
   },
   computed: {
@@ -118,15 +119,19 @@ export default {
 
       if (configOnCloud.exists) {
         this.config = Object.assign({}, DefaultConfig, JSON.parse(configOnCloud.data().config))
-        this.start()
         this.status = 9
       } else {
         this.errorMessage = '設定コードは無効です。'
         this.status = 1
+        return
       }
+
+      this.chatServices = [new NiconicoProvider(this.niconicoLiveId)]
+
+      this.start()
     },
     start() {
-      const chatService = new ChatService([new DummyProvider()], chat => {
+      const chatService = new ChatService(this.chatServices, chat => {
         this.chats.push(chat)
       })
       chatService.start()
