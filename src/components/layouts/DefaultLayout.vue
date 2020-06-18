@@ -9,10 +9,23 @@
       <h1>あにこめ</h1>
       <v-spacer />
       <v-btn
-        to="/config"
-        icon
+        :to="{name: 'About'}"
+        text
       >
-        <v-icon>mdi-cog</v-icon>
+        このサイトについて
+        <v-icon small>
+          mdi-newspaper-variant-outline
+        </v-icon>
+      </v-btn>
+
+      <v-btn
+        :to="{name: 'Config'}"
+        text
+      >
+        設定
+        <v-icon small>
+          mdi-cog
+        </v-icon>
       </v-btn>
     </v-app-bar>
 

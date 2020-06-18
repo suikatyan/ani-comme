@@ -6,7 +6,6 @@ export default class Chat {
   message
   time = new Date()
   name
-  icon
   number
   type = 'comment'
 

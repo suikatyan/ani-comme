@@ -228,16 +228,16 @@ export default {
           value: 'date-name',
         },
         {
-          text: 'アイコン',
-          value: 'icon',
+          text: 'コメント番号',
+          value: 'number',
         },
         {
-          text: 'アイコン+名前',
-          value: 'icon-name',
+          text: 'コメント番号+名前',
+          value: 'number-name',
         },
         {
-          text: '時刻+アイコン+名前',
-          value: 'date-icon-name',
+          text: '時刻+コメント番号+名前',
+          value: 'date-number-name',
         },
         {
           text: 'サイト名',

@@ -2,6 +2,7 @@
   <v-menu
     v-model="menu"
     :close-on-content-click="false"
+    max-width="300px"
     transition="scale-transition"
     offset-y
   >

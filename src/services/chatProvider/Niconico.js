@@ -41,10 +41,8 @@ export default class Niconico {
     chat.site = 'niconico'
 
     if (message.mail && message.mail.includes('184')) {
-      chat.icon = ''
       chat.name = message.user_id.slice(0, NAME_LENGTH_WHEN_184)
     } else {
-      chat.icon = ''
       chat.name = message.user_id
     }
 

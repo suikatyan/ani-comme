@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <icon :chat="chat" /> <name :chat="chat" />
-  </div>
+  <span>
+    <date :chat="chat" /> <number :chat="chat" /> <name :chat="chat" />
+  </span>
 </template>
 
 <script>
-import Icon from '@/components/chat/frame/Icon'
+import Date from '@/components/chat/frame/Date'
 import Name from '@/components/chat/frame/Name'
+import Number from '@/components/chat/frame/Number'
 
 export default {
   components: {
+    Number,
     Name,
-    Icon,
+    Date,
   },
   props: {
     chat: {

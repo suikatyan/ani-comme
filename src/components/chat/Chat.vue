@@ -28,24 +28,24 @@
 
 <script>
 import DateComponent from '@/components/chat/frame/Date'
-import DateIconName from '@/components/chat/frame/DateIconName'
 import DateName from '@/components/chat/frame/DateName'
-import Icon from '@/components/chat/frame/Icon'
-import IconName from '@/components/chat/frame/IconName'
+import DateNumberName from '@/components/chat/frame/DateNumberName'
 import Message from '@/components/chat/frame/Message'
 import Name from '@/components/chat/frame/Name'
+import Number from '@/components/chat/frame/Number'
+import NumberName from '@/components/chat/frame/NumberName'
 import Site from '@/components/chat/frame/Site'
 
 export default {
   components: {
     Message,
     Name,
-    Icon,
-    IconName,
     Site,
     Date: DateComponent,
-    DateIconName,
     DateName,
+    Number,
+    NumberName,
+    DateNumberName,
   },
   props: {
     config: {

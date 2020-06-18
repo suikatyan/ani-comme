@@ -48,11 +48,6 @@
           </v-icon>
         </v-col>
       </v-row>
-      <v-row v-if="error">
-        <v-col class="error--text">
-          {{ error }}
-        </v-col>
-      </v-row>
     </v-container>
   </v-card>
 </template>

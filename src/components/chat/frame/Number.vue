@@ -1,6 +1,6 @@
 <template>
   <span>
-    icon
+    {{ chat.number }}
   </span>
 </template>
 
