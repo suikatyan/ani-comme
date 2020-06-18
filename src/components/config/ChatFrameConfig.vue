@@ -99,6 +99,17 @@
               <config-item>
                 <template v-slot:title>
                   横幅自動調整
+                  <config-hint>
+                    <v-card>
+                      <v-card-title>
+                        横幅自動調整 について
+                      </v-card-title>
+                      <v-card-text>
+                        この枠の横幅を可変（表示内容の横幅と同じ横幅）にさせます。<br>
+                        オフにすると、横幅は固定になります。
+                      </v-card-text>
+                    </v-card>
+                  </config-hint>
                 </template>
                 <template v-slot:content>
                   <v-switch
@@ -174,22 +185,23 @@
 
 <script>
 import ColorConfig from '@/components/config/ColorConfig'
+import ConfigHint from '@/components/config/ConfigHint'
 import ConfigItem from '@/components/config/ConfigItem'
 import range from '@/utils/range'
 
-const MAX_COLUMN_COUNT = 3,
-  MAX_ROW_COUNT = 3,
-
-  defaultFrame = () => ({
-    content: 'message',
-    align: 'left',
-    color: '#000000FF',
-  })
+const MAX_COLUMN_COUNT = 3
+const MAX_ROW_COUNT = 3
+const defaultFrame = () => ({
+  content: 'message',
+  align: 'left',
+  color: '#000000FF',
+})
 
 export default {
   components: {
     ConfigItem,
     ColorConfig,
+    ConfigHint,
   },
   props: {
     layout: {
@@ -209,11 +221,11 @@ export default {
         },
         {
           text: '時刻',
-          value: 'time',
+          value: 'date',
         },
         {
           text: '時刻+名前',
-          value: 'time-name',
+          value: 'date-name',
         },
         {
           text: 'アイコン',
@@ -225,7 +237,7 @@ export default {
         },
         {
           text: '時刻+アイコン+名前',
-          value: 'time-icon-name',
+          value: 'date-icon-name',
         },
         {
           text: 'サイト名',

@@ -1,7 +1,7 @@
 <template>
   <v-card
     :style="styles"
-    :class="cardClassed"
+    :class="cardClasses"
     class="pa-1 ma-1"
   >
     <v-row
@@ -14,6 +14,7 @@
         :key="colIndex"
         :class="`text-${col.align}`"
         :cols="col.autoWidth ? 'auto' : false"
+        :style="colStyles(col)"
         class="px-1"
       >
         <component
@@ -26,14 +27,14 @@
 </template>
 
 <script>
+import DateComponent from '@/components/chat/frame/Date'
+import DateIconName from '@/components/chat/frame/DateIconName'
+import DateName from '@/components/chat/frame/DateName'
 import Icon from '@/components/chat/frame/Icon'
 import IconName from '@/components/chat/frame/IconName'
 import Message from '@/components/chat/frame/Message'
 import Name from '@/components/chat/frame/Name'
 import Site from '@/components/chat/frame/Site'
-import Time from '@/components/chat/frame/Time'
-import TimeIconName from '@/components/chat/frame/TimeIconName'
-import TimeName from '@/components/chat/frame/TimeName'
 
 export default {
   components: {
@@ -42,9 +43,9 @@ export default {
     Icon,
     IconName,
     Site,
-    Time,
-    TimeIconName,
-    TimeName,
+    Date: DateComponent,
+    DateIconName,
+    DateName,
   },
   props: {
     config: {
@@ -61,15 +62,23 @@ export default {
       return {
         backgroundColor: this.site.backgroundColor,
         borderRadius: this.site.commentAreaRounded ? '4px' : 0,
+        textShadow: this.site.shadow ? '1px 1px 4px #00000070' : 'initial',
       }
     },
     site() {
       return this.config[this.chat.site]
     },
-    cardClassed() {
+    cardClasses() {
       return {
         'elevation-0': !this.config.commentAreaShadow,
         'elevation-2': this.config.commentAreaShadow,
+      }
+    },
+  },
+  methods: {
+    colStyles(col) {
+      return {
+        color: col.color,
       }
     },
   },

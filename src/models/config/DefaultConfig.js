@@ -4,7 +4,7 @@ export default {
     'sans-serif',
   ],
   backgroundColor: '#FFFFFF00',
-  fontSize: '18px',
+  fontSize: '14px',
   animationIn: 'fadeIn',
   animationOut: 'fadeOut',
   durationTime: 10,
@@ -15,15 +15,17 @@ export default {
   niconico: {
     backgroundColor: '#96D3B2AA',
     commentAreaRounded: true,
+    shadow: false,
   },
   youtube: {
     backgroundColor: '#A9A8FFAA',
     commentAreaRounded: true,
+    shadow: false,
   },
   layout: [
     [
       {
-        content: 'time-name',
+        content: 'date-name',
         align: 'left',
         color: '#000000FF',
         autoWidth: false,
@@ -32,7 +34,7 @@ export default {
         content: 'site',
         align: 'right',
         color: '#000000FF',
-        autoWidth: false,
+        autoWidth: true,
       },
     ],
     [

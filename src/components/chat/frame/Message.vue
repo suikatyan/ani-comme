@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <span>
     {{ chat.message }}
-  </div>
+  </span>
 </template>
 
 <script>

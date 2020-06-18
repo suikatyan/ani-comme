@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <span>
     icon
-  </div>
+  </span>
 </template>
 
 <script>

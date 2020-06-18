@@ -6,9 +6,29 @@
           v-model="dialog"
           persistent
         >
-          <v-card>
+          <v-card scrollable>
             <v-card-title>
-              配信設定
+              <v-row no-gutters>
+                <v-col>
+                  配信設定
+                </v-col>
+                <v-spacer />
+                <v-col
+                  cols="auto"
+                  class="subtitle-1"
+                >
+                  {{ code }}
+                  <v-btn
+                    :to="{name: 'Config', query: {code}}"
+                    color="primary"
+                    icon
+                  >
+                    <v-icon>
+                      mdi-pencil-outline
+                    </v-icon>
+                  </v-btn>
+                </v-col>
+              </v-row>
             </v-card-title>
             <v-container>
               <v-row>
@@ -114,7 +134,7 @@
                   dense
                   outlined
                 >
-                  今後もこの設定を使う場合は、このページをブックマークしておくと便利です。
+                  今後もこのレイアウト設定を使う場合は、このページをブックマークしておくと便利です。
                 </v-alert>
               </v-row>
             </v-container>

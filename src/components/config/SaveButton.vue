@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import md5 from 'md5'
+import ConfigService from '@/services/ConfigService'
 
 export default {
   props: {
@@ -91,25 +91,9 @@ export default {
   methods: {
     async save() {
       this.loading = true
-      const {db} = await import('@/utils/firestore')
-      const json = JSON.stringify(this.config)
-      const code = `config-${md5(json)}`
-      const collection = db.collection('config')
-      const configOnCloud = await collection
-        .doc(code)
-        .get()
-
-      if (configOnCloud.exists) {
-        console.log(configOnCloud.data())
-      } else {
-        collection.doc(code).set({
-          code,
-          config: json,
-        })
-        console.log('add!')
-      }
-
-      this.code = code
+      const configService = new ConfigService()
+      configService.config = this.config
+      this.code = await configService.save()
       this.loading = false
     },
   },

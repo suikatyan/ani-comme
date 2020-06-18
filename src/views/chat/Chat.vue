@@ -60,6 +60,7 @@
 import BlankLayout from '@/components/layouts/BlankLayout'
 import ChatArea from '@/components/chat/ChatArea'
 import ChatService from '@/services/ChatService'
+import ConfigService from '@/services/ConfigService'
 import DefaultConfig from '@/models/config/DefaultConfig'
 import NiconicoProvider from '@/services/chatProvider/Niconico'
 
@@ -111,14 +112,10 @@ export default {
 
       this.status = 2
 
-      const {db} = await import('@/utils/firestore')
-      const collection = db.collection('config')
-      const configOnCloud = await collection
-        .doc(this.code)
-        .get()
-
-      if (configOnCloud.exists) {
-        this.config = Object.assign({}, DefaultConfig, JSON.parse(configOnCloud.data().config))
+      const configService = new ConfigService()
+      const config = await configService.fetch(this.code)
+      if (config) {
+        this.config = config
         this.status = 9
       } else {
         this.errorMessage = '設定コードは無効です。'

@@ -17,7 +17,7 @@
           <preset-section />
 
           <!-- 設定コードを読み込む -->
-          <old-config-section />
+          <old-config-section @update="config = $event" />
 
           <v-btn
             v-if="!moreDetail"
@@ -276,6 +276,19 @@
                   />
                 </template>
               </config-item>
+
+              <!-- 文字に影をつける -->
+              <config-item>
+                <template v-slot:title>
+                  文字に影をつける
+                </template>
+                <template v-slot:content>
+                  <v-switch
+                    v-model="config.niconico.shadow"
+                    color="accent"
+                  />
+                </template>
+              </config-item>
             </v-card>
 
             <v-card color="grey lighten-4">
@@ -307,6 +320,19 @@
                 <template v-slot:content>
                   <v-switch
                     v-model="config.youtube.commentAreaRounded"
+                    color="accent"
+                  />
+                </template>
+              </config-item>
+
+              <!-- 文字に影をつける -->
+              <config-item>
+                <template v-slot:title>
+                  文字に影をつける
+                </template>
+                <template v-slot:content>
+                  <v-switch
+                    v-model="config.youtube.shadow"
                     color="accent"
                   />
                 </template>
@@ -365,6 +391,7 @@ import ChatService from '@/services/ChatService'
 import ColorConfig from '@/components/config/ColorConfig'
 import ConfigHint from '@/components/config/ConfigHint'
 import ConfigItem from '@/components/config/ConfigItem'
+import ConfigService from '@/services/ConfigService'
 import DefaultConfig from '@/models/config/DefaultConfig'
 import DefaultLayout from '@/components/layouts/DefaultLayout'
 import DummyProvider from '@/services/chatProvider/Dummy'
@@ -408,7 +435,15 @@ export default {
       chats: [],
     }
   },
-  mounted() {
+  async mounted() {
+    // eslint-disable-next-line prefer-destructuring
+    const code = this.$route.query.code
+    if (code) {
+      await this.setConfigByCode(code)
+    } else {
+      this.config = DefaultConfig
+    }
+
     const chatService = new ChatService([new DummyProvider()], chat => {
       this.chats.push(chat)
     })
@@ -427,6 +462,11 @@ export default {
   methods: {
     clearPreview() {
       this.chats.push({type: 'command:clear'})
+    },
+    async setConfigByCode(code) {
+      const configService = new ConfigService()
+      const config = await configService.fetch(code)
+      this.config = config ? config : DefaultConfig
     },
   },
 }
