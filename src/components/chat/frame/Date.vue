@@ -23,8 +23,8 @@ export default {
           .padStart(2, '0'),
         this.chat.time.getMinutes().toString()
           .padStart(2, '0'),
-        this.chat.time.getSeconds().toString()
-          .padStart(2, '0'),
+        // this.chat.time.getSeconds().toString()
+        //   .padStart(2, '0'),
       ].join(':')
     },
   },

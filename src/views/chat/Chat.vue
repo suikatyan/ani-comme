@@ -63,6 +63,7 @@ import ChatService from '@/services/ChatService'
 import ConfigService from '@/services/ConfigService'
 import DefaultConfig from '@/models/config/DefaultConfig'
 import NiconicoProvider from '@/services/chatProvider/Niconico'
+import YoutubeProvider from '@/services/chatProvider/Youtube'
 
 export default {
   components: {
@@ -75,8 +76,6 @@ export default {
       chats: [],
       status: 0,
       dialog: true,
-      niconicoUrl: '',
-      youtubeUrl: '',
       errorMessage: null,
       homeUrl: window.location.origin,
       chatServices: [],
@@ -123,7 +122,13 @@ export default {
         return
       }
 
-      this.chatServices = [new NiconicoProvider(this.niconicoLiveId)]
+      if (this.niconicoLiveId) {
+        this.chatServices.push(new NiconicoProvider(this.niconicoLiveId))
+      }
+
+      if (this.youtubeLiveId) {
+        this.chatServices.push(new YoutubeProvider(this.youtubeLiveId))
+      }
 
       this.start()
     },

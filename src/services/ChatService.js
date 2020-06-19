@@ -22,6 +22,6 @@ export default class ChatService {
       }
 
       this.#callback(this.#chats.shift())
-    }, 100)
+    }, 200)
   }
 }

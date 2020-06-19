@@ -1,4 +1,9 @@
-import Chat from '@/models/Chat'
+import {
+  getInitialContinuation,
+  listen,
+} from '@/services/YoutubeService'
+import Chat from '../../models/Chat'
+// import Chat from '@/models/Chat'
 
 export default class Youtube {
   #callback
@@ -12,8 +17,30 @@ export default class Youtube {
     this.#callback = callback
   }
 
-  start() {
+  async start() {
+    const continuation = await getInitialContinuation(this.#id)
+    if (!continuation) {
+      return
+    }
 
-    // this.#callback(gen.next().value)
+    await listen(continuation, message => {
+      this.convert(message)
+      this.#callback(this.convert(message))
+    })
+  }
+
+  convert(message) {
+    const chat = new Chat()
+
+    chat.message = message.message.runs
+      .filter(m => Object.prototype.hasOwnProperty.call(m, 'text'))
+      .map(m => m.text)
+      .join('')
+    chat.time = new Date(message.timestampUsec / 1000)
+    chat.number = ''
+    chat.site = 'youtube'
+    chat.name = message.authorName.simpleText
+
+    return chat
   }
 }

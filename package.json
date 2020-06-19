@@ -110,7 +110,12 @@
       "dot-location": ["error", "property"],
       "prefer-object-spread": "off",
       "max-statements": "off",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "no-await-in-loop": "off",
+      "no-continue": "off",
+      "callback-return": "off",
+      "multiline-comment-style": "off",
+      "no-constant-condition":"off"
     }
   },
   "browserslist": [
