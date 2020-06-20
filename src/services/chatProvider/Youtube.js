@@ -23,15 +23,31 @@ export default class Youtube {
       return
     }
 
-    await listen(continuation, message => {
-      this.convert(message)
-      this.#callback(this.convert(message))
+    let isFirst = true
+
+    await listen(continuation, chatSet => {
+      if (isFirst) {
+        isFirst = false
+        return
+      }
+      const chats = chatSet.chats.map(chat => this.convert(chat))
+
+      let index = 0
+      const timer = setInterval(() => {
+        if (chats.length <= index) {
+
+          clearInterval(timer)
+          return
+        }
+
+        this.#callback(chats[index])
+        index++
+      }, chatSet.time / chats.length + 100)
     })
   }
 
   convert(message) {
     const chat = new Chat()
-
     chat.message = message.message.runs
       .filter(m => Object.prototype.hasOwnProperty.call(m, 'text'))
       .map(m => m.text)

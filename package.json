@@ -115,7 +115,8 @@
       "no-continue": "off",
       "callback-return": "off",
       "multiline-comment-style": "off",
-      "no-constant-condition":"off"
+      "no-constant-condition":"off",
+      "no-mixed-operators": "off"
     }
   },
   "browserslist": [
