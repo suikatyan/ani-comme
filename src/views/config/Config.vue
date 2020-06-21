@@ -1,7 +1,7 @@
 <template>
   <default-layout class="config">
     <v-breadcrumbs :items="breads">
-      <template v-slot:divider>
+      <template #divider>
         <v-icon>mdi-chevron-right</v-icon>
       </template>
     </v-breadcrumbs>
@@ -44,7 +44,7 @@
               <v-container fluid>
                 <!-- フォント -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     フォント
                     <config-hint>
                       <v-card>
@@ -59,7 +59,7 @@
                       </v-card>
                     </config-hint>
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <font-config
                       :fonts="config.font"
                       @input="config.font = $event"
@@ -69,10 +69,10 @@
 
                 <!-- 文字サイズ -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     文字サイズ
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <font-size-config
                       :font-size="config.fontSize"
                       @input="config.fontSize = $event"
@@ -82,10 +82,10 @@
 
                 <!-- 背景色 -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     チャットエリアの背景色
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <color-config
                       :color="config.backgroundColor"
                       @update="config.backgroundColor = $event"
@@ -95,7 +95,7 @@
 
                 <!-- 時間経過で消す -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     時間経過で消す
                     <config-hint>
                       <v-card>
@@ -110,7 +110,7 @@
                       </v-card>
                     </config-hint>
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <v-select
                       v-model="config.durationTime"
                       :items="[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]"
@@ -123,10 +123,10 @@
 
                 <!-- チャットエリアの角を丸くする -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     チャットエリアの角を丸くする
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <v-switch
                       v-model="config.chatAreaRounded"
                       color="accent"
@@ -136,10 +136,10 @@
 
                 <!-- コメントエリアに影をつける -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     コメントエリアに影をつける
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <v-switch
                       v-model="config.commentAreaShadow"
                       color="accent"
@@ -149,7 +149,7 @@
 
                 <!-- 下から上へ -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     下から上へ
                     <config-hint>
                       <v-card>
@@ -163,7 +163,7 @@
                       </v-card>
                     </config-hint>
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <v-switch
                       v-model="config.fromBottom"
                       color="accent"
@@ -174,10 +174,10 @@
 
                 <!-- 表示アニメーション -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     表示アニメーション
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <animation-in-config
                       :animation="config.animationIn"
                       @input="config.animationIn = $event"
@@ -187,10 +187,10 @@
 
                 <!-- 非表示アニメーション -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     非表示アニメーション
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <animation-out-config
                       :animation="config.animationOut"
                       @input="config.animationOut = $event"
@@ -200,7 +200,7 @@
 
                 <!-- アニメーションをスムーズにする -->
                 <config-item>
-                  <template v-slot:title>
+                  <template #title>
                     アニメーションをスムーズにする
                     <config-hint>
                       <v-card>
@@ -215,7 +215,7 @@
                       </v-card>
                     </config-hint>
                   </template>
-                  <template v-slot:content>
+                  <template #content>
                     <v-switch
                       v-model="config.smooth"
                       color="accent"
@@ -253,10 +253,10 @@
 
               <!-- 背景色 -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   コメントエリアの背景色
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <color-config
                     :color="config.niconico.backgroundColor"
                     @update="config.niconico.backgroundColor = $event"
@@ -266,10 +266,10 @@
 
               <!-- コメントエリアの角を丸くする -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   コメントエリアの角を丸くする
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-switch
                     v-model="config.niconico.commentAreaRounded"
                     color="accent"
@@ -279,10 +279,10 @@
 
               <!-- 文字に影をつける -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   文字に影をつける
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-switch
                     v-model="config.niconico.shadow"
                     color="accent"
@@ -301,10 +301,10 @@
 
               <!-- 背景色 -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   コメントエリアの背景色
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <color-config
                     :color="config.youtube.backgroundColor"
                     @update="config.youtube.backgroundColor = $event"
@@ -314,10 +314,10 @@
 
               <!-- コメントエリアの角を丸くする -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   コメントエリアの角を丸くする
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-switch
                     v-model="config.youtube.commentAreaRounded"
                     color="accent"
@@ -327,10 +327,10 @@
 
               <!-- 文字に影をつける -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   文字に影をつける
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-switch
                     v-model="config.youtube.shadow"
                     color="accent"

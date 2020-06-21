@@ -6,7 +6,7 @@
     transition="scale-transition"
     offset-y
   >
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <v-text-field
         v-model="model"
         v-bind="attrs"
@@ -14,7 +14,7 @@
         readonly
         v-on="on"
       >
-        <template v-slot:prepend>
+        <template #prepend>
           <v-icon
             :color="model"
             class="ichimatsu"

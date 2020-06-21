@@ -6,7 +6,7 @@
     offset-y
     open-on-hover
   >
-    <template v-slot:activator="{ on, attrs }">
+    <template #activator="{ on, attrs }">
       <v-icon
         color="primary"
         v-bind="attrs"

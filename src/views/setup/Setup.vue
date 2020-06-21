@@ -92,7 +92,7 @@
                             v-model="chatUrl"
                             dense
                           >
-                            <template v-slot:append-outer>
+                            <template #append-outer>
                               <v-btn
                                 color="grey lighten-2"
                                 icon

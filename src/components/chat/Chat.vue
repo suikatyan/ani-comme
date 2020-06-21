@@ -35,6 +35,7 @@ import Name from '@/components/chat/frame/Name'
 import Number from '@/components/chat/frame/Number'
 import NumberName from '@/components/chat/frame/NumberName'
 import Site from '@/components/chat/frame/Site'
+import SiteShort from '@/components/chat/frame/SiteShort'
 
 export default {
   components: {
@@ -46,6 +47,7 @@ export default {
     Number,
     NumberName,
     DateNumberName,
+    SiteShort,
   },
   props: {
     config: {

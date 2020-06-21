@@ -11,45 +11,71 @@ const getInitialContinuation = async liveId => {
   return json.success ? json.continuation : ''
 }
 
-const listen = async (initialContinuation, callback) => {
-  let continuation = initialContinuation
-  let time = 6000
-  for (;;) {
-    const url = `${GET_LIVE_CHAT_URL}?continuation=${continuation}`
-    const response = await fetch(url)
-    const json = await response.json()
+const getLiveChatTextMessageRenderer = action => {
+  if (!Object.prototype.hasOwnProperty.call(action, 'addChatItemAction')) {
+    return null
+  }
 
-    if (!json.success) {
-      await sleep(10000)
-    }
+  if (!Object.prototype.hasOwnProperty.call(action.addChatItemAction, 'item')) {
+    return null
+  }
 
-    const chats = []
+  if (!Object.prototype.hasOwnProperty.call(action.addChatItemAction.item, 'liveChatTextMessageRenderer')) {
+    return null
+  }
+
+  return action.addChatItemAction.item.liveChatTextMessageRenderer
+}
+
+const getMeta = response => {
+  if (Object.prototype.hasOwnProperty.call(response.continuationContents.liveChatContinuation.continuations[0], 'timedContinuationData')) {
+    return [
+      response.continuationContents.liveChatContinuation.continuations[0].timedContinuationData.continuation,
+      response.continuationContents.liveChatContinuation.continuations[0].timedContinuationData.timeoutMs,
+    ]
+  }
+
+  return [
+    response.continuationContents.liveChatContinuation.continuations[0].invalidationContinuationData.continuation,
+    response.continuationContents.liveChatContinuation.continuations[0].invalidationContinuationData.timeoutMs,
+  ]
+}
+
+const fetchChats = async (continuation, callback) => {
+  const url = `${GET_LIVE_CHAT_URL}?continuation=${continuation}`
+  const response = await fetch(url)
+  const json = await response.json()
+
+  if (!json.success) {
+    await sleep(10000)
+  }
+
+  const chats = []
+
+  if (json.content.response.continuationContents.liveChatContinuation.actions) {
     for (const action of json.content.response.continuationContents.liveChatContinuation.actions) {
-      if (!Object.prototype.hasOwnProperty.call(action, 'addChatItemAction')) {
+      const chat = getLiveChatTextMessageRenderer(action)
+      if (!chat) {
         continue
       }
-
-      if (!Object.prototype.hasOwnProperty.call(action.addChatItemAction, 'item')) {
-        continue
-      }
-
-      if (!Object.prototype.hasOwnProperty.call(action.addChatItemAction.item, 'liveChatTextMessageRenderer')) {
-        continue
-      }
-
-      continuation = json.content.response.continuationContents.liveChatContinuation.continuations[0].timedContinuationData.continuation
-      time = json.content.response.continuationContents.liveChatContinuation.continuations[0].timedContinuationData.timeoutMs
 
       chats.push(action.addChatItemAction.item.liveChatTextMessageRenderer)
     }
-
-    callback({
-      chats,
-      time,
-    })
-
-    await sleep(time + 500)
   }
+
+  const [newContinuation, time] = getMeta(json.content.response)
+
+
+  callback({
+    chats,
+    time,
+  })
+
+  setTimeout(() => fetchChats(newContinuation, callback), time)
+}
+
+const listen = (initialContinuation, callback) => {
+  fetchChats(initialContinuation, callback)
 }
 
 export {

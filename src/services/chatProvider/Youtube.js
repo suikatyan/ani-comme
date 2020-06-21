@@ -30,12 +30,12 @@ export default class Youtube {
         isFirst = false
         return
       }
+
       const chats = chatSet.chats.map(chat => this.convert(chat))
 
       let index = 0
       const timer = setInterval(() => {
         if (chats.length <= index) {
-
           clearInterval(timer)
           return
         }

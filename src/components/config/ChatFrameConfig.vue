@@ -21,7 +21,7 @@
           offset-y
           top
         >
-          <template v-slot:activator="{ on, attrs }">
+          <template #activator="{ on, attrs }">
             <v-btn
               color="primary"
               v-bind="attrs"
@@ -37,10 +37,10 @@
             <v-container fluid>
               <!-- 内容 -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   内容
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-select
                     v-model="frame[rowIndex][colIndex].content"
                     :items="contents"
@@ -51,10 +51,10 @@
 
               <!-- 文字寄せ -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   文字寄せ
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-btn-toggle
                     v-model="frame[rowIndex][colIndex].align"
                     color="primary"
@@ -84,10 +84,10 @@
 
               <!-- 文字色 -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   文字色
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <color-config
                     :color="frame[rowIndex][colIndex].color"
                     @update="frame[rowIndex][colIndex].color = $event"
@@ -97,7 +97,7 @@
 
               <!-- 横幅自動調整 -->
               <config-item>
-                <template v-slot:title>
+                <template #title>
                   横幅自動調整
                   <config-hint>
                     <v-card>
@@ -111,7 +111,7 @@
                     </v-card>
                   </config-hint>
                 </template>
-                <template v-slot:content>
+                <template #content>
                   <v-switch
                     v-model="frame[rowIndex][colIndex].autoWidth"
                     color="accent"
@@ -242,6 +242,10 @@ export default {
         {
           text: 'サイト名',
           value: 'site',
+        },
+        {
+          text: 'サイト名（短縮）',
+          value: 'site-short',
         },
         {
           text: 'メッセージ',

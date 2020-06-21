@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <v-breadcrumbs :items="breads">
-      <template v-slot:divider>
+      <template #divider>
         <v-icon>mdi-chevron-right</v-icon>
       </template>
     </v-breadcrumbs>
