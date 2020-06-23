@@ -65,7 +65,6 @@ const fetchChats = async (continuation, callback) => {
 
   const [newContinuation, time] = getMeta(json.content.response)
 
-
   callback({
     chats,
     time,

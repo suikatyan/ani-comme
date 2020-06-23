@@ -21,10 +21,6 @@ export default {
       model: this.fonts,
       fontList: [
         'Noto Sans JP',
-        'M PLUS 1p',
-        'M PLUS Rounded 1c',
-        'Sawarabi Mincho',
-        'Sawarabi Gothic',
         'sans-serif',
         'serif',
       ],

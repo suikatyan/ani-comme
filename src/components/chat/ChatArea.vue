@@ -3,6 +3,7 @@
     :style="styles"
     class="elevation-0 full-height full-width"
   >
+    <font :font-family="config.font" />
     <transition-group
       name="chat-transition"
       :enter-active-class="animationIn"
@@ -47,10 +48,12 @@
 
 <script>
 import ChatComponent from '@/components/chat/Chat'
+import Font from '@/components/common/Font'
 
 export default {
   components: {
     ChatComponent,
+    Font,
   },
   props: {
     config: {
