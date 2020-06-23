@@ -12,28 +12,13 @@
     <v-container>
       <v-row justify="space-around">
         <v-btn
+          v-for="index in 4"
+          :key="index"
           color="primary"
           outlined
+          @click="change(index)"
         >
-          1
-        </v-btn>
-        <v-btn
-          color="primary"
-          outlined
-        >
-          2
-        </v-btn>
-        <v-btn
-          color="primary"
-          outlined
-        >
-          3
-        </v-btn>
-        <v-btn
-          color="primary"
-          outlined
-        >
-          4
+          {{ index }}
         </v-btn>
       </v-row>
     </v-container>
@@ -41,7 +26,20 @@
 </template>
 
 <script>
-export default {
+import DefaultLayout from '@/components/layouts/DefaultLayout'
 
+const layouts = [
+  DefaultLayout,
+  DefaultLayout,
+  DefaultLayout,
+  DefaultLayout,
+]
+
+export default {
+  methods: {
+    change(index) {
+      this.$emit('change', layouts[index])
+    },
+  },
 }
 </script>
