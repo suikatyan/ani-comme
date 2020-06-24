@@ -258,6 +258,11 @@ export default {
       )),
     }
   },
+  watch: {
+    layout() {
+      this.frame = this.layout
+    },
+  },
   methods: {
     addColumn(rowIndex, colIndex) {
       this.menu[rowIndex][colIndex] = false

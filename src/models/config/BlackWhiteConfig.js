@@ -13,35 +13,27 @@ export default {
   commentAreaShadow: true,
   smooth: true,
   niconico: {
-    backgroundColor: '#96D3B2AA',
+    backgroundColor: '#272727AB',
     commentAreaRounded: true,
     shadow: false,
   },
   youtube: {
-    backgroundColor: '#A9A8FFAA',
+    backgroundColor: '#272727AB',
     commentAreaRounded: true,
     shadow: false,
   },
   layout: [
     [
       {
-        content: 'date-name',
+        content: 'date',
         align: 'left',
-        color: '#000000FF',
-        autoWidth: false,
-      },
-      {
-        content: 'site',
-        align: 'right',
-        color: '#000000FF',
+        color: '#BBBBBBFF',
         autoWidth: true,
       },
-    ],
-    [
       {
         content: 'message',
         align: 'left',
-        color: '#000000FF',
+        color: '#FFFFFFFF',
         autoWidth: false,
       },
     ],

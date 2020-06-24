@@ -51,6 +51,11 @@ export default {
       ],
     }
   },
+  watch: {
+    animation() {
+      this.model = this.animation
+    },
+  },
   methods: {
     onInput(animation) {
       this.$emit(

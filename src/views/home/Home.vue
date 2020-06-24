@@ -15,10 +15,10 @@
           <div class="pt-5 text-center">
             <v-btn
               :to="{name: 'Config'}"
-              color="primary"
+              color="white"
               large
             >
-              見た目を決める
+              レイアウトを決める
               <v-icon small>
                 mdi-cog
               </v-icon>
@@ -36,7 +36,7 @@
               class="full-height"
             />
           </v-card>
-          <preset-section />
+          <preset-section @change="config = $event" />
         </v-col>
       </v-row>
       <v-row>
@@ -78,10 +78,15 @@
 
 <style scoped>
 .preview {
-  height: 300px;
+  height: 400px;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.home {
+  color: white;
+  background: linear-gradient(to bottom, #610dc9 0%,#df9bff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 </style>
 

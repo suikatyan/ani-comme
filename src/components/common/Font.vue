@@ -32,8 +32,5 @@ export default {
         .join('&')
     },
   },
-  mounted() {
-    console.log(this.fonts)
-  },
 }
 </script>

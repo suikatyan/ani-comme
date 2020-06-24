@@ -22,6 +22,11 @@ export default {
       sizeList: range(40).map((_, index) => `${index + 10}px`),
     }
   },
+  watch: {
+    fontSize() {
+      this.model = this.fontSize
+    },
+  },
   methods: {
     onInput(fontSize) {
       this.$emit('input', fontSize)

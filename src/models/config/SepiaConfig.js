@@ -1,43 +1,32 @@
 export default {
-  font: [
-    'Noto Sans JP',
-    'sans-serif',
-  ],
+  font: ['serif'],
   backgroundColor: '#FFFFFF00',
   fontSize: '16px',
-  animationIn: 'fadeIn',
-  animationOut: 'fadeOut',
+  animationIn: 'zoomIn',
+  animationOut: 'zoomOut',
   durationTime: 10,
   fromBottom: false,
   chatAreaRounded: true,
   commentAreaShadow: true,
   smooth: true,
   niconico: {
-    backgroundColor: '#96D3B2AA',
+    backgroundColor: '#E6B876AB',
     commentAreaRounded: true,
-    shadow: false,
+    shadow: true,
   },
   youtube: {
-    backgroundColor: '#A9A8FFAA',
+    backgroundColor: '#E6B876AB',
     commentAreaRounded: true,
-    shadow: false,
+    shadow: true,
   },
   layout: [
     [
       {
-        content: 'date-name',
+        content: 'site-short',
         align: 'left',
-        color: '#000000FF',
-        autoWidth: false,
-      },
-      {
-        content: 'site',
-        align: 'right',
         color: '#000000FF',
         autoWidth: true,
       },
-    ],
-    [
       {
         content: 'message',
         align: 'left',

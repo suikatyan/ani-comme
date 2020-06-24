@@ -14,7 +14,7 @@
         <!-- 設定項目 -->
         <v-col cols="7">
           <!-- プリセット -->
-          <preset-section />
+          <preset-section @change="config = $event" />
 
           <!-- 設定コードを読み込む -->
           <old-config-section @update="config = $event" />

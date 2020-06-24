@@ -26,6 +26,11 @@ export default {
       ],
     }
   },
+  watch: {
+    fonts() {
+      this.model = this.fonts
+    },
+  },
   methods: {
     onInput(font) {
       this.$emit(

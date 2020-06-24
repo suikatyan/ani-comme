@@ -53,6 +53,11 @@ export default {
       model: this.color,
     }
   },
+  watch: {
+    color() {
+      this.model = this.color
+    },
+  },
   methods: {
     onUpdate(color) {
       this.$emit(

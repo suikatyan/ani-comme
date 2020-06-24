@@ -41,7 +41,7 @@
           </v-row>
           <v-row>
             <v-col>
-              OBSなどの配信ツールで使う場合は、チャット画面を開いてください。
+              チャットを表示する場合、次のチャット画面を開いてください。
               <v-btn
                 :to="{name: 'Setup', query: {code}}"
                 color="primary"
