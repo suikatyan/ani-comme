@@ -27,7 +27,7 @@
         </v-col>
         <v-col cols="5">
           <div class="text-center">
-            プレビュー
+            サンプル
           </div>
           <v-card class="preview">
             <chat-area
