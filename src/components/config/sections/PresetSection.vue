@@ -15,7 +15,6 @@
           v-for="index in 4"
           :key="index"
           color="primary"
-          outlined
           @click="change(index - 1)"
         >
           {{ index }}

@@ -86,6 +86,7 @@ export default {
       dialog: false,
       code: '',
       loading: false,
+      tooltip: true,
     }
   },
   methods: {

@@ -8,17 +8,18 @@
               アニメーション付きコメント表示ツール
             </h2>
             <div class="mt-2">
-              自分だけのコメントのレイアウトを決めて、配信画面に映そう！
+              自分だけのチャット画面を配信画面に映そう！
               OBSにも対応！
             </div>
           </div>
           <div class="pt-5 text-center">
             <v-btn
               :to="{name: 'Config'}"
-              color="white"
+              color="accent"
               large
+              rounded
             >
-              レイアウトを決める
+              <span class="font-weight-bold">レイアウトを決める</span>
               <v-icon small>
                 mdi-cog
               </v-icon>
@@ -26,8 +27,8 @@
           </div>
         </v-col>
         <v-col cols="5">
-          <div class="text-center">
-            サンプル
+          <div class="text-center caption">
+            自分の配信のコメントが、こんな風に表示されます。
           </div>
           <v-card class="preview">
             <chat-area

@@ -11,6 +11,7 @@
         v-for="content in contents"
         :key="content.title"
         class="my-4"
+        outlined
       >
         <v-card-title>
           {{ content.title }}
@@ -19,7 +20,11 @@
           {{ content.text }}
         </v-card-text>
       </v-card>
-      <v-card class="my-4">
+
+      <v-card
+        class="my-4"
+        outlined
+      >
         <v-card-title>
           サイトのソースは見れますか。
         </v-card-title>
@@ -30,11 +35,33 @@
             href="https://github.com/suikatyan/ani-comme"
             target="_blank"
             outlined
-            small
           >
             GitHub
-            <v-icon small>
-              mdi-arrow-right-bold-circle-outline
+            <v-icon>
+              mdi-github
+            </v-icon>
+          </v-btn>
+        </v-card-text>
+      </v-card>
+
+      <v-card
+        class="my-4"
+        outlined
+      >
+        <v-card-title>
+          不具合を見つけました。 / 作者に連絡が取りたい。
+        </v-card-title>
+        <v-card-text class="text--primary">
+          作者のTwitterまでご連絡ください。
+          <v-btn
+            color="primary"
+            href="https://twitter.com/suikatyan9"
+            target="_blank"
+            outlined
+          >
+            Twitter
+            <v-icon>
+              mdi-twitter
             </v-icon>
           </v-btn>
         </v-card-text>
@@ -90,7 +117,7 @@ export default {
         },
         {
           title: 'クッキーは使っていますか。',
-          text: '使っていません。',
+          text: '使っていません。Google Analyticsなどのツールも使用していません。',
         },
       ],
     }
